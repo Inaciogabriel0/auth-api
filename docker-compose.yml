@@ -1,0 +1,12 @@
+services:
+  db:
+    image: postgres:16
+    container_name: auth_db
+
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "1234567"
+      POSTGRES_DB: authdb
+
+    ports:
+      - "5432:5432"
