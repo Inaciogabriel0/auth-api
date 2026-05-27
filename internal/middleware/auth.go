@@ -38,6 +38,7 @@ func RequireAuth(c *gin.Context) {
 	// 4. Armazenar os dados do usuário no contexto para a rota poder usar depois
 	c.Set("userID", claims["user_id"])
 	c.Set("userEmail", claims["email"])
+	c.Set("userRole", claims["role"])
 
 	// 5. Permitir a continuação da requisição
 	c.Next()

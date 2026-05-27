@@ -12,12 +12,13 @@ var getJwtSecret = func() []byte {
 	return []byte(os.Getenv("JWT_SECRET"))
 }
 
-func GenerateToken(userID uint, email string) (string, error) {
+func GenerateToken(userID uint, email string, role string) (string, error) {
 	// Definir as regras e tempo de expiração do token
 	claims := jwt.MapClaims{
 		"user_id": userID,
 		"email":   email,
-		"exp":     time.Now().Add(time.Hour * 24).Unix(), // Expira em 24h
+		"role":    role,
+		"exp":     time.Now().Add(time.Minute * 15).Unix(), // Expira em 15 minutos (Etapa 15)
 	}
 
 	// Criar o token usando o algoritmo de criptografia HS256
